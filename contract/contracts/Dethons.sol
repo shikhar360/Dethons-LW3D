@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.7;
 
-contract DeHacks {
+contract Deethon {
     address payable public owner;
     uint internal id = 0;
     uint internal listId = 0;

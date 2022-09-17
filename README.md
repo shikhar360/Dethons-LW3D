@@ -1,4 +1,18 @@
-## Getting Started
+# Deethon ( A Decentralized Hackathon-Listing-Platform )
+
+## Technologies Used
+
+### Thirdweb SDK
+
+#### Contract release link :
+
+https://thirdweb.com/mumbai/0x90eC46A33F66C6BA585a1E060F140d38613F2828/
+
+#### Contract Address : Polygon Mumbai
+
+`0x90eC46A33F66C6BA585a1E060F140d38613F2828`
+
+## How to get started ? 🤔
 
 Create a project using this example:
 
@@ -10,7 +24,7 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 On `pages/_app.js`, you'll find our `ThirdwebProvider` wrapping your app, this is necessary for our hooks to work.
 
-on `pages/index.js`, you'll find the `useMetamask` hook that we use to connect the user's wallet to MetaMask, `useDisconnect` that we use to disconnect it, and `useAddress` to check the user's wallet address once connected. 
+on `pages/index.js`, you'll find the `useMetamask` hook that we use to connect the user's wallet to MetaMask, `useDisconnect` that we use to disconnect it, and `useAddress` to check the user's wallet address once connected.
 
 ## Learn More
 
