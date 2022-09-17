@@ -6,11 +6,11 @@
 
 #### Contract release link :
 
-https://thirdweb.com/mumbai/0x90eC46A33F66C6BA585a1E060F140d38613F2828/
+https://thirdweb.com/mumbai/0xdfFAd4083E4b031f719F00953Be7431C164B0C8A/
 
 #### Contract Address : Polygon Mumbai
 
-`0x90eC46A33F66C6BA585a1E060F140d38613F2828`
+`0xdfFAd4083E4b031f719F00953Be7431C164B0C8A`
 
 ## How to get started ? 🤔
 
