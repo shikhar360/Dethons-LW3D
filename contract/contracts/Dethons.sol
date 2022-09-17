@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.7;
 
-contract Dethons {
+contract DeHacks {
     address payable public owner;
     uint internal id = 0;
     uint internal listId = 0;
@@ -89,6 +89,7 @@ contract Dethons {
         string memory _end
     ) external payable {
         require(msg.value >= 0.01 ether, "Send 0.01 ETH or more ");
+        require(isOldUser[msg.sender] == true, "No hackathon on your address");
         hackArr[addToPos[msg.sender]].startDate = _start;
         hackArr[addToPos[msg.sender]].regEndDate = _regEnd;
         hackArr[addToPos[msg.sender]].endDate = _end;
@@ -99,12 +100,14 @@ contract Dethons {
         payable
     {
         require(msg.value >= 0.01 ether, "Send 0.01 ETH or more ");
+        require(isOldUser[msg.sender] == true, "No hackathon on your address");
         hackArr[addToPos[msg.sender]].hackName = _name;
         hackArr[addToPos[msg.sender]].description = _desc;
     }
 
     function increasePrize(uint _prize) external payable {
         require(msg.value >= 0.01 ether, "Send 0.01 ETH or more ");
+        require(isOldUser[msg.sender] == true, "No hackathon on your address");
         hackArr[addToPos[msg.sender]].prizeAmount = _prize;
     }
 
@@ -136,6 +139,7 @@ contract Dethons {
     }
 
     function getCoverImg() external view returns (string memory) {
+        require(isOldUser[msg.sender] == true, "No hackathon on your address");
         return photoHash[msg.sender];
     }
 
