@@ -19,27 +19,7 @@ export default function Hackathons() {
     signerOrProvider: signer || provider,
   });
 
-  async function setMyHack() {
-    try {
-      const myHackTx = await contract.allHacks();
-
-      let hackAllTx = [];
-      myHackTx.forEach((hack) => {
-        hackAllTx.push({
-          hackName: hack.hackName,
-          start: hack.startDate,
-          regEnd: hack.regEndDate,
-          end: hack.endDate,
-          desc: hack.description,
-          prize: hack.prizeAmount.toString(),
-          owner: hack.hackOwner,
-        });
-      });
-      setAllMyHack(hackAllTx);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  
   console.log(allMyHack);
 
   async function applying(val){
@@ -57,6 +37,27 @@ export default function Hackathons() {
 
 
   useEffect(() => {
+    async function setMyHack() {
+      try {
+        const myHackTx = await contract.allHacks();
+  
+        let hackAllTx = [];
+        myHackTx.forEach((hack) => {
+          hackAllTx.push({
+            hackName: hack.hackName,
+            start: hack.startDate,
+            regEnd: hack.regEndDate,
+            end: hack.endDate,
+            desc: hack.description,
+            prize: hack.prizeAmount.toString(),
+            owner: hack.hackOwner,
+          });
+        });
+        setAllMyHack(hackAllTx);
+      } catch (err) {
+        console.log(err);
+      }
+    }
     setMyHack();
   }, []);
   return (

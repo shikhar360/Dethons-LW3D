@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+
 import "@rainbow-me/rainbowkit/styles.css";
 import Navbar from "./components/Navbar";
 import Head from "next/head";

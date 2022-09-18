@@ -62,23 +62,7 @@ export default function MyHackathons() {
     signerOrProvider: signer || provider,
   });
 
-  async function setMyHack() {
-    try {
-      const myHackTx = await contract.myHack();
-
-      setIsMyHack({
-        hackName: myHackTx.hackName,
-        start: myHackTx.startDate,
-        regEnd: myHackTx.regEndDate,
-        end: myHackTx.endDate,
-        desc: myHackTx.description,
-        prize: myHackTx.prizeAmount.toString(),
-        owner: myHackTx.hackOwner,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  
 
 
  async function startingHack (){
@@ -101,6 +85,23 @@ export default function MyHackathons() {
  }
 
   useEffect(() => {
+    async function setMyHack() {
+      try {
+        const myHackTx = await contract.myHack();
+  
+        setIsMyHack({
+          hackName: myHackTx.hackName,
+          start: myHackTx.startDate,
+          regEnd: myHackTx.regEndDate,
+          end: myHackTx.endDate,
+          desc: myHackTx.description,
+          prize: myHackTx.prizeAmount.toString(),
+          owner: myHackTx.hackOwner,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
     setMyHack();
   }, [activeEdit]);
 
