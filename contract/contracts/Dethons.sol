@@ -121,7 +121,6 @@ contract Deethon {
     }
 
     function getListOfApplicant() external view returns (address[] memory) {
-        require(isOldUser[msg.sender] == true, "No hackathon on your address");
         return partsListForOwner[msg.sender].listArr;
     }
 

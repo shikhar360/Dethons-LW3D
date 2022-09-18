@@ -1,7 +1,11 @@
 import Navbar from "./components/Navbar";
 import Head from "next/head";
 import Image from "next/image";
-import { ConnectWallet } from "@thirdweb-dev/react";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useAccount, useContract, useProvider, useSigner } from "wagmi";
+
+
+import { contractAddress } from './../constants/constant';
 
 export default function Home() {
   function handleContact(e) {
@@ -56,7 +60,7 @@ export default function Home() {
           in comparatively lesser cost with lots of features
         </span>
         <div className=" mt-8">
-          <ConnectWallet accentColor="#8338ec" colorMode="light" />
+          <ConnectButton/>
         </div>
 
         <div className="w-full pt-20 flex flex-col items-center justify-center">
@@ -85,7 +89,7 @@ export default function Home() {
               alt="image"
               className="rounded-xl "
             />
-            <Image
+            {/* <Image
               src="/images/arca.png"
               width={320}
               height={120}
@@ -98,7 +102,7 @@ export default function Home() {
               height={120}
               alt="image"
               className="rounded-xl "
-            />
+            /> */}
           </div>
         </div>
       </div>

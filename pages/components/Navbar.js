@@ -1,8 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import styles from "../../styles/nav.module.css";
-import { ConnectWallet } from "@thirdweb-dev/react";
+
 import { useState } from "react";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useAccount, useContract, useProvider, useSigner } from "wagmi";
+
+import { contractAddress  , abi} from './../../constants/constant';
 
 export default function Navbar() {
   const [isActive, setIsActive] = useState({
@@ -104,7 +107,7 @@ export default function Navbar() {
         </div>
 
         <div className="   ">
-          <ConnectWallet accentColor="#8338ec" colorMode="light" />
+          <ConnectButton />
         </div>
       </div>
 

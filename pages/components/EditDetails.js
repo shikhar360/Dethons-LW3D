@@ -1,6 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import { useAccount, useContract, useProvider, useSigner } from "wagmi";
+import { ethers } from "ethers";
+import { contractAddress, abi } from "./../../constants/constant";
+
 
 export default function EditHackathon({closeEdit , activeEdit}) {
 
@@ -46,13 +50,67 @@ export default function EditHackathon({closeEdit , activeEdit}) {
   })
 
   function handlePrize(e){
-    setDates((prev) => {
+    setPrize((prev) => {
       return {
         ...prev,
         [e.target.name]: e.target.value,
       };
     });
   }
+
+  const { address, isConnected } = useAccount();
+
+  const provider = useProvider();
+  const { data: signer } = useSigner();
+  const contract = useContract({
+    addressOrName: contractAddress,
+    contractInterface: abi,
+    signerOrProvider: signer || provider,
+  });
+
+
+ async function settingDates(val){
+ try{
+  const _amount = ethers.utils.parseEther("0.01");
+   const dateTx = await contract.setDates(val.startDate ,val.regEnd , val.endDate ,  { value: _amount })
+   setLoading(true)
+   await dateTx.wait()
+   setLoading(false)
+ }catch(err){
+  console.log(err);
+ }
+ }
+
+
+ async function settingNameDesc(val){
+ try{
+  const _amount = ethers.utils.parseEther("0.01");
+  const ndTx = await contract.setDetails(val.name , val.desc ,{value : _amount})
+  setLoading(true)
+  await ndTx.wait()
+  setLoading(false)
+
+ }catch(err){
+  console.log(err);
+ }
+ }
+
+ async function settingPrize(val){
+ try{
+  const _amount = ethers.utils.parseEther("0.01");
+  const prizeTx = await contract.increasePrize(val.prize , {value : _amount})
+  setLoading(true)
+ await prizeTx.wait()
+ setLoading(false)
+ }catch(err){
+  console.log(err);
+ }
+ }
+
+
+
+
+
   return (
     <div className="flex items-center justify-center flex-col h-fit w-full font-mono absolute top-0 z-10 bg-black/80 pt-36 pb-44 ">
       <Head>
@@ -127,6 +185,12 @@ export default function EditHackathon({closeEdit , activeEdit}) {
             placeholder="Hackathon Ends"
             />
           </div>
+          <button
+          onClick={() => settingDates(dates)}
+          className="mt-8 m-8 rounded-md py-2 px-4 hover:bg-[#9a52ff] bg-[#8338ec] font-mono"
+        >
+          Confirm 
+        </button>
             </>
           }
           
@@ -152,6 +216,12 @@ export default function EditHackathon({closeEdit , activeEdit}) {
             className=" resize-none text-start text-sm border mx-8 border-zinc-300 indent-4 rounded-sm w-9/12 h-24"
             placeholder="Description "
             />
+            <button
+          onClick={() => settingNameDesc(form)}
+          className="mt-8 m-8 rounded-md py-2 px-4 hover:bg-[#9a52ff] bg-[#8338ec] font-mono"
+        >
+          Confirm 🆗
+        </button>
             </>}
 
 
@@ -169,6 +239,12 @@ export default function EditHackathon({closeEdit , activeEdit}) {
             className="text-start text-sm border mx-8 border-zinc-300 indent-4 rounded-sm w-9/12 h-8 "
             placeholder="Prize Amount 🤑"
             />
+            <button
+          onClick={() => settingPrize(prize)}
+          className="mt-8 m-8 rounded-md py-2 px-4 hover:bg-[#9a52ff] bg-[#8338ec] font-mono"
+        >
+          Confirm 
+        </button>
             </>}
         </div>
 
@@ -177,12 +253,7 @@ export default function EditHackathon({closeEdit , activeEdit}) {
 
 
 
-        <button
-          // onClick={() => addingPatientData(form)}
-          className="mt-8 m-8 rounded-md py-2 px-4 hover:bg-[#9a52ff] bg-[#8338ec] font-mono"
-        >
-          Confirm 🆗
-        </button>
+        
       </div>
             </div>
     </div>
