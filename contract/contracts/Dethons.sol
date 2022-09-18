@@ -162,4 +162,8 @@ contract Deethon {
         require(msg.sender == owner, "Only owner can withdraw");
         payable(msg.sender).transfer(address(this).balance);
     }
+
+    function myHack() external view returns (Hack memory) {
+        return hackArr[addToPos[msg.sender]];
+    }
 }
