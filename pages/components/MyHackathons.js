@@ -62,33 +62,28 @@ export default function MyHackathons() {
     signerOrProvider: signer || provider,
   });
 
-  
-
-
- async function startingHack (){
-  try{
-    const startTx = await contract.startHack()
-    await startTx.wait()
-  }catch(err){
-    console.log(err);
+  async function startingHack() {
+    try {
+      const startTx = await contract.startHack();
+      await startTx.wait();
+    } catch (err) {
+      console.log(err);
+    }
   }
-
- }
- async function endingHack (){
-  try{
- const endTx = await contract.endHack()
- await endTx.wait()
-  }catch(err){
-    console.log(err);
+  async function endingHack() {
+    try {
+      const endTx = await contract.endHack();
+      await endTx.wait();
+    } catch (err) {
+      console.log(err);
+    }
   }
-
- }
 
   useEffect(() => {
     async function setMyHack() {
       try {
         const myHackTx = await contract.myHack();
-  
+
         setIsMyHack({
           hackName: myHackTx.hackName,
           start: myHackTx.startDate,
@@ -105,6 +100,7 @@ export default function MyHackathons() {
     setMyHack();
   }, [activeEdit]);
 
+  // console.log(activeEdit, closeEdit);
   return (
     <div className=" pt-32 pb-12 w-full h-full flex  items-center gap-10 justify-center bg-[#f2fff7] ">
       <div
@@ -204,13 +200,15 @@ export default function MyHackathons() {
           </div>
           <div className=" flex items-center justify-around w-full">
             <button
-            onClick={startingHack}
-            className=" bg-[#a1eb70] text-[#0b2b07] text-xl mx-auto transition-all duration-300 linear rounded-xl my-8 p-1.5 hover:scale-105 hover:shadow-lg hover:shadow-[#a2f36b] font-mono font-bold">
+              onClick={startingHack}
+              className=" bg-[#a1eb70] text-[#0b2b07] text-xl mx-auto transition-all duration-300 linear rounded-xl my-8 p-1.5 hover:scale-105 hover:shadow-lg hover:shadow-[#a2f36b] font-mono font-bold"
+            >
               Start Hackathon
             </button>
             <button
-            onClick={endingHack}
-            className=" bg-[#e78c7f] text-[#2b0f07] text-xl mx-auto transition-all duration-300 linear rounded-xl my-8 p-1.5 hover:scale-105 hover:shadow-lg hover:shadow-[#ff8977] font-mono font-bold">
+              onClick={endingHack}
+              className=" bg-[#e78c7f] text-[#2b0f07] text-xl mx-auto transition-all duration-300 linear rounded-xl my-8 p-1.5 hover:scale-105 hover:shadow-lg hover:shadow-[#ff8977] font-mono font-bold"
+            >
               End Hackathon
             </button>
           </div>
@@ -221,8 +219,14 @@ export default function MyHackathons() {
         </span>
       )}
       {active && <AddHackathon handleActive={() => handleActive()} />}
-      {activeEdit.editDate || activeEdit.editPrize || activeEdit.nameDesc ? (
-        <EditHackathon activeEdit={activeEdit} closeEdit={closeEdit} />
+
+      {activeEdit.editPrize || activeEdit.nameDesc || activeEdit.editDate ? (
+        <EditHackathon
+          prizex={activeEdit.editPrize}
+          descname={activeEdit.nameDesc}
+          datex={activeEdit.editDate}
+          closeEdit={closeEdit}
+        />
       ) : null}
     </div>
   );

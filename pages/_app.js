@@ -1,4 +1,4 @@
-
+import "../styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
 import Navbar from "./components/Navbar";
 import Head from "next/head";
@@ -28,14 +28,8 @@ const wagmiClient = createClient({
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div className=" scroll-smooth ">
-      <Head>
-        <title> Deethon </title>
-        <link
-          rel="stylesheet"
-          href="//fonts.googleapis.com/css2?family=Caveat&family=DynaPuff&family=Montserrat:wght@500&display=swap"
-        />
-      </Head>
+    <>
+    
       <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider
           chains={chains}
@@ -48,7 +42,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </RainbowKitProvider>
       </WagmiConfig>
-    </div>
+    </>
   );
 }
 
