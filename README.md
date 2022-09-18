@@ -1,7 +1,11 @@
 # Deethon ( A Decentralized Hackathon-Listing-Platform )
+## Inspiration
+Participating in hackathon was gettinng difficult day by day. People with more refrences were getting easily . So to prevent these I have made it decentralized
 
 ## Technologies Used
-
+### Next.js
+### Tailwind.css
+### Solidity
 ### Thirdweb SDK
 
 #### Contract release link :
