@@ -61,7 +61,7 @@ export default function Hackathons() {
     setMyHack();
   }, []);
   return (
-    <div className="w-full h-full pt-36 pb-32 px-16 grid grid-cols-3 auto-rows-max bg-[#f2fff7] ">
+    <div className="w-full h-full pt-36 sm:pb-32 pb-12 sm:px-16 px-8 grid sm:grid-cols-3 grid-cols-1 auto-rows-max bg-[#f2fff7] items-center justify-center gap-10">
        {loading && (
           <div className="w-screen flex flex-col  items-center justify-center h-screen top-0 absolute bg-white/50 z-30">
             <span className="bg-[white] text-[#1b4332] p-3 my-2 text-xl font-semibold relative rounded-xl">
@@ -74,8 +74,8 @@ export default function Hackathons() {
       {allMyHack &&
         allMyHack.map((hack, ind) => {
           return (
-            <div key={ind}>
-              <div className="w-9/12 h-max bg-white/80 flex flex-col items-start justify-center shrink rounded-xl font-mono p-4 ">
+            <div key={ind} className="flex items-center justify-center overflow-hidden">
+              <div className="sm:w-full w-full h-max bg-white/80 flex flex-col items-start justify-center shrink rounded-xl font-mono p-4 ">
                 <div className=" w-full flex justify-between items-center">
                   <span className="text-2xl font-mono font-semibold mb-6 w-56 truncate">
                     {" "}

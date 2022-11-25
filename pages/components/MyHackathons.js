@@ -102,7 +102,7 @@ export default function MyHackathons() {
 
   // console.log(activeEdit, closeEdit);
   return (
-    <div className=" pt-32 pb-12 w-full h-full flex  items-center gap-10 justify-center bg-[#f2fff7] ">
+    <div className=" sm:pt-32 pt-28 sm:pb-12 pb-6 px-4 w-full min-h-screen overflow-x-hidden flex sm:flex-row flex-col items-center gap-10 justify-center bg-[#f2fff7] ">
       <div
         onClick={handleActive}
         className="rounded-3xl w-24 h-28 bg-[#c7f9cc] hover:bg-[#d9fdef] transition-all duration-500 linear flex items-center justify-center ml-22 "
@@ -111,7 +111,7 @@ export default function MyHackathons() {
       </div>
 
       {isMyHack ? (
-        <div className="w-9/12 h-5/6 bg-white/80 flex flex-col items-start justify-center rounded-xl font-mono p-4 ">
+        <div className="sm:w-9/12 w-full  h-5/6 bg-white/80 flex flex-col items-start justify-center rounded-xl font-mono p-4 ">
           <div className=" w-full flex justify-between items-center">
             <span className="text-2xl font-mono font-semibold">
               {" "}
@@ -138,7 +138,7 @@ export default function MyHackathons() {
           </div>
 
           <div className="w-full flex justify-between items-center ">
-            <div className=" w-40 p-2 rounded-xl flex flex-start justify-start font-mono flex-col">
+            <div className=" sm:w-44 w-32 p-2 rounded-xl flex flex-start justify-start font-mono flex-col">
               <span className=" font-mono text-md text-zinc-500 font-semibold">
                 Starting From
               </span>
@@ -146,7 +146,7 @@ export default function MyHackathons() {
                 {isMyHack.start}
               </span>
             </div>
-            <div className=" w-44 p-2 rounded-xl flex flex-start justify-start font-mono flex-col">
+            <div className=" sm:w-44 w-32 p-2 rounded-xl flex flex-start justify-start font-mono flex-col">
               <span className=" font-mono text-md text-zinc-500 font-semibold">
                 Registration Ends
               </span>
@@ -154,7 +154,7 @@ export default function MyHackathons() {
                 {isMyHack.regEnd}
               </span>
             </div>
-            <div className=" w-40 p-2 rounded-xl flex flex-start justify-start font-mono ">
+            <div className=" sm:w-44 w-32 p-2 rounded-xl flex flex-start justify-start font-mono ">
               <div className="flex-col">
                 <span className=" font-mono text-md text-zinc-500 font-semibold">
                   Hackathon Ends
@@ -175,9 +175,9 @@ export default function MyHackathons() {
               </div>
             </div>
           </div>
-          <span className="text-lg font-mono text-zinc-600 font-semibold">
+          <span className="sm:text-lg text-sm font-mono text-zinc-600 font-semibold w-11/12">
             {" "}
-            <b className="text-[#10002b]">😎 Owner :</b> {isMyHack.owner}{" "}
+            <b className="text-[#10002b] ">😎 Owner :</b> <span className="truncate w-32">{isMyHack.owner}</span> {" "}
           </span>
 
           <div className="flex flex-col mt-2 gap-2">
@@ -194,20 +194,20 @@ export default function MyHackathons() {
                 onClick={handleNameDesc}
               />
             </div>
-            <div className="w-full h-72 overflow-y-scroll font-mono scrollbar-hide text-zinc-800 ">
+            <div className="w-full h-full overflow-y-scroll font-mono scrollbar-hide text-zinc-800 ">
               {isMyHack.desc}
             </div>
           </div>
-          <div className=" flex items-center justify-around w-full">
+          <div className=" flex items-center justify-around w-full gap-6">
             <button
               onClick={startingHack}
-              className=" bg-[#a1eb70] text-[#0b2b07] text-xl mx-auto transition-all duration-300 linear rounded-xl my-8 p-1.5 hover:scale-105 hover:shadow-lg hover:shadow-[#a2f36b] font-mono font-bold"
+              className=" bg-[#a1eb70] text-[#0b2b07] sm:text-xl text-md mx-auto transition-all duration-300 linear rounded-xl my-8 p-1.5 hover:scale-105 hover:shadow-lg hover:shadow-[#a2f36b] font-mono font-bold"
             >
               Start Hackathon
             </button>
             <button
               onClick={endingHack}
-              className=" bg-[#e78c7f] text-[#2b0f07] text-xl mx-auto transition-all duration-300 linear rounded-xl my-8 p-1.5 hover:scale-105 hover:shadow-lg hover:shadow-[#ff8977] font-mono font-bold"
+              className=" bg-[#e78c7f] text-[#2b0f07] sm:text-xl text-md mx-auto transition-all duration-300 linear rounded-xl my-8 p-1.5 hover:scale-105 hover:shadow-lg hover:shadow-[#ff8977] font-mono font-bold"
             >
               End Hackathon
             </button>

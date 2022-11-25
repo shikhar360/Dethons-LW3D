@@ -7,7 +7,7 @@ import { contractAddress, abi } from "./../../constants/constant";
 export default function MyApplicants() {
   const [showApplicantList, setShowApplicantList] = useState(false);
   const [applicantList, setApplicantList] = useState('');
-  const { address, isConnected } = useAccount();
+  
 
   const provider = useProvider();
   const { data: signer } = useSigner();
@@ -20,15 +20,15 @@ export default function MyApplicants() {
   async function setMyApps() {
     try {
       const myAppTx = await contract.getListOfApplicant();
-
+        await myAppTx.wait()
       
      console.log(myAppTx);
-      // let hackAppTx = [];
-      // myAppTx.forEach((hack) => {
-      //   hackAppTx.push(hack);
-      // });
+      let hackAppTx = [];
+      myAppTx.forEach((hack) => {
+        hackAppTx.push(hack);
+      });
       setApplicantList(myAppTx);
-      // console.log(hackAppTx , myAppTx);
+      console.log(hackAppTx , myAppTx);
     } catch (err) {
       console.log(err);
     }
@@ -47,7 +47,7 @@ useEffect(()=>{
 setMyApps()
 },[])
 
-  return ( <div className="w-full h-screen  pt-36 pb-32 text-center flex flex-col items-center justify-center bg-[#f2fff7]">
+  return ( <div className="w-full min-h-screen  sm:pt-36 pt-28 sm:pb-32 pb-12 text-center flex flex-col items-center justify-center bg-[#f2fff7]">
         
       {showApplicantList && (
         <div className=" w-full h-full mt-4 p-2 flex flex-col items-center justify-start w-90 h-38 overflow-y-scroll gap-4">
