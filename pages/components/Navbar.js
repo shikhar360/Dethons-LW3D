@@ -66,10 +66,10 @@ export default function Navbar() {
 
   return (
     <div className=" flex flex-col items-center justify-center bg-white/5 absolute top-0 w-full z-10">
-      <div className=" w-full   flex  justify-around py-1 ">
-        <span className={` text-2xl text-[#8338ec] my-auto `}>Deethon</span>
+      <div className=" w-full   flex justify-start  py-1.5 ">
+        <span className={` sm:text-2xl text-[#8338ec] my-auto text-sm ml-1.5 `}>Deethon</span>
 
-        <div className=" flex justify-between w-1/4 my-auto  ">
+        <div className=" flex justify-between w-1/4 my-auto gap-2 mx-auto ">
           <div
             className={` ${
               isActive.home &&
@@ -77,7 +77,7 @@ export default function Navbar() {
             }`}
           >
             <Link href="/">
-              <a onClick={handleHome}> Home</a>
+              <a onClick={handleHome} className="text-xs sm:text-base"> Home</a>
             </Link>
           </div>
 
@@ -85,11 +85,11 @@ export default function Navbar() {
           <div
             className={` ${
               isActive.hackathon &&
-              " underline decoration-violet-600	underline-offset-4	 "
+              " underline decoration-violet-600	underline-offset-4	text-sm sm:text-base "
             }`}
           >
             <Link href="/Hackathons">
-              <a onClick={handleHack}> Hackathons</a>
+              <a onClick={handleHack} className="text-xs sm:text-base"> Hackathons</a>
             </Link>
           </div>
 
@@ -101,31 +101,31 @@ export default function Navbar() {
             }`}
           >
             <Link href="/Applications">
-              <a onClick={handleApply}> Applications</a>
+              <a onClick={handleApply} className="text-xs sm:text-base"> Applications</a>
             </Link>
           </div>
         </div>
 
-        <div className="   ">
+        <div className="  text-xs sm:text-base ml-auto ">
           <ConnectButton />
         </div>
       </div>
 
       <div className="w-1/4">
         {isActive.hackathon && (
-          <div className=" text-stone-500 flex justify-around text-xs mt-2 w-full ">
+          <div className=" text-stone-500 flex justify-around text-xs mt-2 w-full mx-auto">
             <div
               className={` ${" rounded-xl p-1 hover:bg-lime-200	underline-offset-4	 "}`}
             >
               <Link href="/Hackathons">
-                <a onClick={handleHack}> Live Hackathons</a>
+                <a onClick={handleHack} className="text-xs sm:text-base" > Live Hackathons</a>
               </Link>
             </div>
             <div
               className={` ${" rounded-xl p-1 hover:bg-lime-200	underline-offset-4	 "}`}
             >
               <Link href="/components/MyHackathons">
-                <a onClick={handleMyHack}> My Hackathons</a>
+                <a onClick={handleMyHack} className="text-xs sm:text-base"> My Hackathons</a>
               </Link>
             </div>
           </div>
@@ -137,7 +137,7 @@ export default function Navbar() {
               className={` ${"rounded-xl p-1 hover:bg-lime-200	underline-offset-4	 "}`}
             >
               <Link href="/Applications">
-                <a onClick={handleApply}> Your Applications</a>
+                <a onClick={handleApply} className="text-xs sm:text-base"> Your Applications</a>
               </Link>
             </div>
 
@@ -145,7 +145,7 @@ export default function Navbar() {
               className={` ${" rounded-xl p-1 hover:bg-lime-200	underline-offset-4	 "}`}
             >
               <Link href="/components/MyApplicants">
-                <a onClick={handleMyApply}> My Applicants</a>
+                <a onClick={handleMyApply} className="text-xs sm:text-base"> My Applicants</a>
               </Link>
             </div>
           </div>
